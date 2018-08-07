@@ -1,0 +1,18 @@
+
+AutoOpen: true
+
+TimeToKick: 30
+
+WelcomeMessage:
+  - "§a欢迎加入方块世纪,§e%player%"
+  
+BookMessage: "§a这里是方块世纪服~\n§a群号:169677540\n§a一起快乐的玩耍吧！"
+  
+MYSQL:
+  Host: "localhost"
+  Port: "3306"
+  DatabaseName: "anvillogin"
+  UserName: "root"
+  Password: "123456"
+
+IPMaxAccount: 1
