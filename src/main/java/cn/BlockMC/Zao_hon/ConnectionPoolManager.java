@@ -5,21 +5,22 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.zaxxer.hikari.HikariConfig;
-import com.zaxxer.hikari.HikariDataSource;
+//import com.zaxxer.hikari.HikariConfig;
+//import com.zaxxer.hikari.HikariDataSource;
 
 public class ConnectionPoolManager {
 	private final AnvilLogin plugin;
 
-	private HikariDataSource dataSource;
+//	private HikariDataSource dataSource;
 	private String hostname;
 	private String port;
 	private String database;
 	private String username;
 	private String password;
-	private int minimumConnections = 1;
+//	private int minimumConnections = 1;
 	private int maximumConnections = 30;
-	private long connectionTimeout = 18000;
+//	private long connectionTimeout = 18000;
+	private ConnectionPool pool;
 
 	public ConnectionPoolManager(AnvilLogin plugin) {
 		this.plugin = plugin;
@@ -36,26 +37,24 @@ public class ConnectionPoolManager {
 	}
 
 	private void setupPool() {
-		HikariConfig config = new HikariConfig();
-		config.setJdbcUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false"
+//		HikariConfig config = new HikariConfig();
+		PoolConfig config = new PoolConfig();
+		config.setJDBCUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false"
 
 		);
 		config.setDriverClassName("com.mysql.jdbc.Driver");
-		config.setUsername(username);
+		config.setUserName(username);
 		config.setPassword(password);
-		config.setMinimumIdle(minimumConnections);
-		config.setMaximumPoolSize(maximumConnections);
-		config.setConnectionTimeout(connectionTimeout);
+//		config.setMinimumIdle(minimumConnections);
+		config.setMaxConnection(maximumConnections);
+//		config.setConnectionTimeout(connectionTimeout);
 		// config.setConnectionTestQuery(testQuery);
-		dataSource = new HikariDataSource(config);
+		pool = new ConnectionPool(config);
 	}
 
 	public void close(Connection conn, PreparedStatement ps, ResultSet res) {
 		if (conn != null)
-			try {
-				conn.close();
-			} catch (SQLException ignored) {
-			}
+			pool.releaseConnection(conn);
 		if (ps != null)
 			try {
 				ps.close();
@@ -69,12 +68,10 @@ public class ConnectionPoolManager {
 	}
 
 	public void closePool() {
-		if (dataSource != null && !dataSource.isClosed()) {
-			dataSource.close();
-		}
+		pool.close();
 	}
 
-	public Connection getConnection() throws SQLException {
-		return dataSource.getConnection();
+	public Connection getConnection() {
+		return pool.getConnection();
 	}
 }
