@@ -7,7 +7,7 @@ public class PoolConfig {
 	private String password;
 	private int maxconnection = 20;
 	private Long waittimeout;
-	private String testquery = "SELECT * FROM *";
+	private String testquery = "SELECT * FROM DUAL";
 
 	public void setDriverClassName(String n) {
 		this.driverclassname = n;

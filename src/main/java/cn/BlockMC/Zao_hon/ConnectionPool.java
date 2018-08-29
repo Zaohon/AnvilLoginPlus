@@ -2,15 +2,23 @@ package cn.BlockMC.Zao_hon;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Vector;
+
+import org.bukkit.Bukkit;
 
 public class ConnectionPool {
 	private PoolConfig config;
 	private Vector<Connection> pool;
+	private Thread thread;
+	private PoolRunnable runnable;
 
 	public ConnectionPool(PoolConfig config) {
 		this.config = config;
+		runnable = new PoolRunnable(pool);
+		thread = new Thread(runnable);
+		thread.start();
 	}
 
 	public Connection getConnection() {
@@ -56,7 +64,8 @@ public class ConnectionPool {
 	}
 
 	public void close() {
-//		runnable.cancel();
+		// runnable.cancel();
+		runnable.stop();
 		pool.forEach(conn -> {
 			try {
 				if (!conn.isClosed()) {
@@ -75,4 +84,53 @@ public class ConnectionPool {
 	public PoolConfig getConfig() {
 		return config;
 	}
+
+	class PoolRunnable implements Runnable {
+		private boolean stop = false;
+		private Vector<Connection> pool;
+
+		public PoolRunnable(Vector<Connection> pool) {
+			this.pool = pool;
+		}
+
+		@Override
+		public void run() {
+			this.poolRefresh();
+		}
+
+		public void poolRefresh() {
+			while (!stop) {
+				try {
+					Thread.sleep(1000*60*60*4l);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				if (pool != null && !pool.isEmpty()) {
+					int size = pool.size();
+					Vector<Connection> v = new Vector<Connection>(pool.size());
+					for (int i = 0; i < size; i++) {
+						v.add(getConnection());
+					}
+					for (Connection conn : v) {
+						PreparedStatement s;
+						try {
+							s = conn.prepareStatement(config.getTestQuery());
+							s.execute();
+
+						} catch (SQLException ignore) {
+						} finally {
+							releaseConnection(conn);
+						}
+					}
+				}
+
+				Bukkit.broadcastMessage("e");
+			}
+		}
+
+		public void stop() {
+			stop = true;
+		}
+	}
+
 }
