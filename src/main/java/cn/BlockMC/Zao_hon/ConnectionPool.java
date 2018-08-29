@@ -123,8 +123,6 @@ public class ConnectionPool {
 						}
 					}
 				}
-
-				Bukkit.broadcastMessage("e");
 			}
 		}
 
