@@ -46,7 +46,7 @@ public class ConnectionPoolManager {
 //		config.setMinimumIdle(minimumConnections);
 		config.setMaxConnection(maximumConnections);
 //		config.setConnectionTimeout(connectionTimeout);
-		// config.setConnectionTestQuery(testQuery);
+		 config.setTestQuery("SELECT UUID FROM user");
 		pool = new ConnectionPool(config);
 	}
 

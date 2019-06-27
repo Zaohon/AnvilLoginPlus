@@ -168,9 +168,7 @@ public class Mysql {
 		String username = plugin.getConfig().getString("MYSQL.UserName");
 		String password = plugin.getConfig().getString("MYSQL.Password");
 		PoolConfig config = new PoolConfig();
-		config.setJDBCUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false"
-
-		);
+		config.setJDBCUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false");
 		config.setDriverClassName("com.mysql.jdbc.Driver");
 		config.setUserName(username);
 		config.setPassword(password);

@@ -87,24 +87,24 @@ public class AnvilGUI {
 		};
 		plugin.getServer().getPluginManager().registerEvents(listener, plugin);
 
-		if (plugin.getConfig().getBoolean("AutoOpen")) {
-			autoopenrun = new BukkitRunnable() {
-
-				@Override
-				public void run() {
-					try {
-						if (p.getOpenInventory().getType() != InventoryType.ANVIL) {
-							open();
-						}
-					} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
-							| InvocationTargetException | NoSuchMethodException | SecurityException e) {
-						e.printStackTrace();
-					}
-				}
-
-			};
-			autoopenrun.runTaskTimer(plugin, 40l, 40l);
-		}
+//		if (plugin.getConfig().getBoolean("AutoOpen")) {
+//			autoopenrun = new BukkitRunnable() {
+//
+//				@Override
+//				public void run() {
+//					try {
+//						if (p.getOpenInventory().getType() != InventoryType.ANVIL) {
+//							open();
+//						}
+//					} catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+//							| InvocationTargetException | NoSuchMethodException | SecurityException e) {
+//						e.printStackTrace();
+//					}
+//				}
+//
+//			};
+//			autoopenrun.runTaskTimer(plugin, 40l, 40l);
+//		}
 	}
 
 	public void open() throws InstantiationException, IllegalAccessException, IllegalArgumentException,
@@ -126,7 +126,7 @@ public class AnvilGUI {
 
 		int c = (int) NMSManager.invokeMethod("nextContainerCounter", p);
 
-		Object chatmessage = ChatMessage.getConstructor(String.class, Object[].class).newInstance("fuck you",
+		Object chatmessage = ChatMessage.getConstructor(String.class, Object[].class).newInstance("§e铁砧登录系统",
 				new Object[0]);
 		Object playerconnection = NMSManager.getField("playerConnection", p);
 		Object packet = PacketPlayOutOpenWindow

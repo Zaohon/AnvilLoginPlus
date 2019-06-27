@@ -122,6 +122,7 @@ public class ConnectionPool {
 							releaseConnection(conn);
 						}
 					}
+					Bukkit.getPluginManager().getPlugin("AnvilLogin").getLogger().info("conn test");
 				}
 			}
 		}

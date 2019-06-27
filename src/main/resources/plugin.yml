@@ -2,7 +2,7 @@ api-version: 1.13
 main: cn.BlockMC.Zao_hon.AnvilLogin
 name: AnvilLogin
 author: Zao_hon
-version: 1.0215
+version: 1.0
 commands:
     changepassword:
     

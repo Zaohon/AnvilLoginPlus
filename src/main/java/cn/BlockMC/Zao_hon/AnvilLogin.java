@@ -3,6 +3,7 @@ package cn.BlockMC.Zao_hon;
 import java.util.HashSet;
 import java.util.UUID;
 
+import org.bstats.bukkit.Metrics;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class AnvilLogin extends JavaPlugin{
@@ -22,6 +23,10 @@ public class AnvilLogin extends JavaPlugin{
 		this.getCommand("changepassword").setExecutor(new Commands(this));
 
 		BookUtil.initialize(this);
+		
+		Metrics metrics = new Metrics(this);
+		metrics.addCustomChart(new Metrics.SimplePie("servers", () -> "Bungee"));
+		
 	}
 	@Override
 	public void onDisable(){
