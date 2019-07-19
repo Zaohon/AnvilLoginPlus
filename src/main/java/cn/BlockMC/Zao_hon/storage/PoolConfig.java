@@ -1,4 +1,4 @@
-package cn.BlockMC.Zao_hon;
+package cn.BlockMC.Zao_hon.storage;
 
 public class PoolConfig {
 	private String driverclassname;

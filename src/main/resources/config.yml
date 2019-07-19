@@ -8,6 +8,8 @@ WelcomeMessage:
   
 BookMessage: "§a这里是方块世纪服~\n§a群号:169677540\n§a一起快乐的玩耍吧！"
   
+SqlType: MYSQL  
+  
 MYSQL:
   Host: "localhost"
   Port: "3306"

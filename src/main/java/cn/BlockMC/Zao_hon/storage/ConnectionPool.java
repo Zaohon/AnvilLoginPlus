@@ -1,4 +1,4 @@
-package cn.BlockMC.Zao_hon;
+package cn.BlockMC.Zao_hon.storage;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

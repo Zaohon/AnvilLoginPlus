@@ -1,4 +1,4 @@
-package cn.BlockMC.Zao_hon;
+package cn.BlockMC.Zao_hon.Util;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -6,6 +6,8 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
+
+import cn.BlockMC.Zao_hon.AnvilLogin;
 
 public class BookUtil {
 	private static ItemStack book;

@@ -1,4 +1,4 @@
-package cn.BlockMC.Zao_hon;
+package cn.BlockMC.Zao_hon.storage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.UUID;
 
 import org.bukkit.entity.Player;
+
+import cn.BlockMC.Zao_hon.AnvilLogin;
 
 //import com.zaxxer.hikari.HikariConfig;
 
@@ -168,7 +170,7 @@ public class Mysql {
 		String username = plugin.getConfig().getString("MYSQL.UserName");
 		String password = plugin.getConfig().getString("MYSQL.Password");
 		PoolConfig config = new PoolConfig();
-		config.setJDBCUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database + "?useSSL=false");
+		config.setJDBCUrl("jdbc:mysql://" + hostname + ":" + port + "/" + database + "?characterEncoding=utf8&useSSL=false");
 		config.setDriverClassName("com.mysql.jdbc.Driver");
 		config.setUserName(username);
 		config.setPassword(password);
