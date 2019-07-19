@@ -2,14 +2,14 @@ package cn.BlockMC.Zao_hon.inventory;
 
 import org.bukkit.entity.Player;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 import cn.BlockMC.Zao_hon.PlayerAuthInfo;
 import cn.BlockMC.Zao_hon.Events.PlayerLoggedEvent;
 
 public class LoginGUIHandler implements AnvilClickEventHandler {
-	private AnvilLogin plugin;
+	private AnvilLoginPlus plugin;
 
-	public LoginGUIHandler(AnvilLogin plugin) {
+	public LoginGUIHandler(AnvilLoginPlus plugin) {
 		this.plugin = plugin;
 	}
 
@@ -22,7 +22,7 @@ public class LoginGUIHandler implements AnvilClickEventHandler {
 			String password = info.getPassword();
 			if (password.equals(event.getName())) {
 				event.setWillClose(true);
-				info.setIP(AnvilLogin.getPresentTime());
+				info.setIP(AnvilLoginPlus.getPresentTime());
 				plugin.getPlayerAuthInfoManager().setPlayerAuthInfo(player.getUniqueId(), info);
 				plugin.getLoggedPlayer().add(player.getUniqueId());
 				PlayerLoggedEvent e = new PlayerLoggedEvent(player);

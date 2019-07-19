@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class PlayerAuthInfoManager {
-	private AnvilLogin plugin;
+	private AnvilLoginPlus plugin;
 	private HashMap<UUID, PlayerAuthInfo> playerAuthInfo = new HashMap<UUID, PlayerAuthInfo>();
 
-	public PlayerAuthInfoManager(AnvilLogin plugin) {
+	public PlayerAuthInfoManager(AnvilLoginPlus plugin) {
 		this.plugin = plugin;
 	}
 

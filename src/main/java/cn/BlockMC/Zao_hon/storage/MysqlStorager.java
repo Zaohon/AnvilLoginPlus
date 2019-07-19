@@ -9,16 +9,16 @@ import java.util.UUID;
 
 import javax.annotation.Nonnull;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 import cn.BlockMC.Zao_hon.PlayerAuthInfo;
 
 public class MysqlStorager extends DataStorager {
-	private AnvilLogin plugin;
+	private AnvilLoginPlus plugin;
 	private String jdbcurl;
 	private String username;
 	private String password;
 
-	public MysqlStorager(AnvilLogin plugin) {
+	public MysqlStorager(AnvilLoginPlus plugin) {
 		this.plugin = plugin;
 		String hostname = plugin.getConfig().getString("MYSQL.Host");
 		String port = plugin.getConfig().getString("MYSQL.Port");

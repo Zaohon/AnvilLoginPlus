@@ -5,11 +5,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 
 public class Commands implements CommandExecutor{
-	private AnvilLogin plugin;
-	public Commands(AnvilLogin plugin){
+	private AnvilLoginPlus plugin;
+	public Commands(AnvilLoginPlus plugin){
 		this.plugin = plugin;
 	}
 	

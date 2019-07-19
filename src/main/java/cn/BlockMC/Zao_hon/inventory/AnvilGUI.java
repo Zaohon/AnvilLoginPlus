@@ -13,7 +13,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.scheduler.BukkitTask;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 import cn.BlockMC.Zao_hon.Util.NMSManager;
 
 public class AnvilGUI {
@@ -30,7 +30,7 @@ public class AnvilGUI {
 	private BukkitTask autoOpenTask;
 	private AnvilClickEventHandler handler;
 
-	public AnvilGUI(Player player, final AnvilClickEventHandler handler, AnvilLogin plugin) {
+	public AnvilGUI(Player player, final AnvilClickEventHandler handler, AnvilLoginPlus plugin) {
 		this.player = player;
 		this.handler = handler;
 		this.listener = new AnvilGUIListener(this);

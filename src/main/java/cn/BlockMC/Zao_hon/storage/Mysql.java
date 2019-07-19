@@ -9,12 +9,12 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 
 //import com.zaxxer.hikari.HikariConfig;
 
 public class Mysql {
-	private final AnvilLogin plugin;
+	private final AnvilLoginPlus plugin;
 	private static final String CREATE_USERS_TABLE = "CREATE TABLE IF NOT EXISTS Users (Name VARCHAR(40),UUID VARCHAR(40),Password VARCHAR(30),FirstLogin VARCHAR(30),LastLogin VARCHAR(30),IP VARCHAR(30))";
 	private static final String INSERT_NEW_USER = "INSERT INTO Users VALUES(?,?,?,?,?,?)";
 	private static final String UPDATE_USER = "UPDATE Users Set LastLogin = ?,IP= ? WHERE UUID = ?";
@@ -162,7 +162,7 @@ public class Mysql {
 		return password;
 	}
 
-	public Mysql(AnvilLogin plugin) {
+	public Mysql(AnvilLoginPlus plugin) {
 		// pool = new ConnectionPoolManager(plugin);
 		String hostname = plugin.getConfig().getString("MYSQL.Host");
 		String port = plugin.getConfig().getString("MYSQL.Port");

@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BookMeta;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 
 public class BookUtil {
 	private static ItemStack book;
@@ -34,7 +34,7 @@ public class BookUtil {
 
 	}
 
-	public static void initialize(AnvilLogin plugin) {
+	public static void initialize(AnvilLoginPlus plugin) {
 		book = new ItemStack(Material.WRITTEN_BOOK);
 		BookMeta meta = (BookMeta) book.getItemMeta();
 //		YamlConfiguration bookconfig = YamlConfiguration.loadConfiguration(plugin.getBookFile());

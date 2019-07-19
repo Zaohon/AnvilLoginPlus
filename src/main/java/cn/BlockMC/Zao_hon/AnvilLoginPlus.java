@@ -15,9 +15,8 @@ import cn.BlockMC.Zao_hon.storage.DataStorager;
 import cn.BlockMC.Zao_hon.storage.MysqlStorager;
 import cn.BlockMC.Zao_hon.storage.SqliteStorager;
 
-public class AnvilLogin extends JavaPlugin {
+public class AnvilLoginPlus extends JavaPlugin {
 	private HashSet<UUID> logged = new HashSet<UUID>();
-//	private Mysql mysql = null;
 	private DataStorager dataStorager;
 	private PlayerAuthInfoManager playerAuthInfoManager;
 
@@ -30,13 +29,12 @@ public class AnvilLogin extends JavaPlugin {
 		PR("     Version: " + this.getDescription().getVersion());
 		PR("     Author:Zao_hon           ");
 		PR("========================");
-//		mysql = new Mysql(this);
 		this.getServer().getPluginManager().registerEvents(new EventListener(this), this);
 		this.getCommand("changepassword").setExecutor(new Commands(this));
 
 		BookUtil.initialize(this);
 		
-		switch(getConfig().getString("SqlType")){
+		switch(getConfig().getString("SQLType")){
 			case "MYSQL":
 				dataStorager = new MysqlStorager(this);
 				break;
@@ -49,11 +47,6 @@ public class AnvilLogin extends JavaPlugin {
 		metrics.addCustomChart(new Metrics.SimplePie("servers", () -> "Bungee"));
 
 	}
-
-//	@Override
-//	public void onDisable() {
-//		mysql.onDisable();
-//	}
 	public void sendWelcomeMessage(Player p) {
 		getConfig().getStringList("WelcomeMessage").forEach(m -> p
 				.sendMessage(ChatColor.translateAlternateColorCodes('&', m.replace("%player%", p.getDisplayName()))));
@@ -64,10 +57,6 @@ public class AnvilLogin extends JavaPlugin {
 	public void PR(String str) {
 		this.getLogger().info(str);
 	}
-
-//	public Mysql getSqlManager() {
-//		return mysql;
-//	}
 
 	public HashSet<UUID> getLoggedPlayer() {
 		return logged;

@@ -9,15 +9,15 @@ import java.util.UUID;
 
 import javax.annotation.Nonnull;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 import cn.BlockMC.Zao_hon.PlayerAuthInfo;
 import cn.BlockMC.Zao_hon.storage.DataStorager.PreparedStatementType;
 
 public class SqliteStorager extends DataStorager {
-	private AnvilLogin plugin;
+	private AnvilLoginPlus plugin;
 	private String path;
 
-	public SqliteStorager(AnvilLogin plugin) {
+	public SqliteStorager(AnvilLoginPlus plugin) {
 		this.plugin = plugin;
 		try {
 			Class.forName("org.sqlite.JDBC");

@@ -5,11 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 
 
 public class ConnectionPoolManager {
-	private final AnvilLogin plugin;
+	private final AnvilLoginPlus plugin;
 
 //	private HikariDataSource dataSource;
 	private String hostname;
@@ -22,7 +22,7 @@ public class ConnectionPoolManager {
 //	private long connectionTimeout = 18000;
 	private ConnectionPool pool;
 
-	public ConnectionPoolManager(AnvilLogin plugin) {
+	public ConnectionPoolManager(AnvilLoginPlus plugin) {
 		this.plugin = plugin;
 		init();
 		setupPool();

@@ -6,14 +6,14 @@ import java.util.regex.Pattern;
 
 import org.bukkit.entity.Player;
 
-import cn.BlockMC.Zao_hon.AnvilLogin;
+import cn.BlockMC.Zao_hon.AnvilLoginPlus;
 import cn.BlockMC.Zao_hon.PlayerAuthInfo;
 import cn.BlockMC.Zao_hon.Events.PlayerLoggedEvent;
 
 public class RegisterGUIHandler implements AnvilClickEventHandler {
-	private AnvilLogin plugin;
+	private AnvilLoginPlus plugin;
 
-	public RegisterGUIHandler(AnvilLogin plugin) {
+	public RegisterGUIHandler(AnvilLoginPlus plugin) {
 		this.plugin = plugin;
 	}
 
@@ -52,7 +52,7 @@ public class RegisterGUIHandler implements AnvilClickEventHandler {
 				return;
 			}
 			event.setWillClose(true);
-			String presentTime = AnvilLogin.getPresentTime();
+			String presentTime = AnvilLoginPlus.getPresentTime();
 			UUID uuid = p.getUniqueId();
 			PlayerAuthInfo info = new PlayerAuthInfo(p.getName(), uuid.toString(), password, presentTime, presentTime,
 					ip);

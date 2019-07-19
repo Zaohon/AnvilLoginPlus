@@ -23,25 +23,14 @@ import cn.BlockMC.Zao_hon.inventory.LoginGUIHandler;
 import cn.BlockMC.Zao_hon.inventory.RegisterGUIHandler;
 
 public class EventListener implements Listener {
-	// private HashSet<UUID> logged = new HashSet<UUID>();
-	// private HashMap<UUID, AnvilGUI> unlogged = new HashMap<UUID, AnvilGUI>();
-	private AnvilLogin plugin;
-	// private Mysql sql;
+	private AnvilLoginPlus plugin;
 
-	public EventListener(AnvilLogin plugin) {
+	public EventListener(AnvilLoginPlus plugin) {
 		this.plugin = plugin;
-		// sql = plugin.getSqlManager();
 	}
 
 	@EventHandler
 	public void join(PlayerJoinEvent e) {
-
-		// final Player p = e.getPlayer();
-		// final UUID u = p.getUniqueId();
-		//
-		// final String password = sql.selectPlayerPassword(p);
-		//
-		// boolean registed = sql.isRegistered(p.getUniqueId());
 		Player player = e.getPlayer();
 		PlayerAuthInfo info = plugin.getPlayerAuthInfoManager().getPlayerAuthInfo(player.getUniqueId());
 		boolean registed = info != null;
